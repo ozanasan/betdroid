@@ -20,6 +20,14 @@
             android:name=".WeekDetailActivity"
             android:label="@string/title_activity_week_detail" >
         </activity>
+        <activity
+            android:name=".DetailWeekActivity"
+            android:label="@string/title_activity_detail_week" >
+        </activity>
+        <activity
+            android:name=".DetailMatchActivity"
+            android:label="@string/title_activity_detail_match" >
+        </activity>
     </application>
 
 </manifest>

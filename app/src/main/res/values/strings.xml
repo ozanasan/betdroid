@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">finaltwo</string>
+    <string name="app_name">welcome to the bet droid</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_week_detail">WeekDetailActivity</string>
+    <string name="title_activity_detail_week">Weeks</string>
+    <string name="week_count">WeekCount</string>
+    <string name="title_activity_detail_match">DetailMatchActivity</string>>
 </resources>

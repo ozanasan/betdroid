@@ -1,7 +1,11 @@
 package com.exapmle.ozanasan.finaltwo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
@@ -15,6 +19,68 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
+
+    class WeekAdapter extends ArrayAdapter<Week>{
+        private final Context context;
+        private final ArrayList<Week> weeksArrayList;
+
+        public WeekAdapter(Context context, ArrayList<Week> weeksArrayList){
+            super(context, R.layout.week_row, weeksArrayList);
+            this.context = context;
+            this.weeksArrayList = weeksArrayList;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            View rowView = inflater.inflate(R.layout.weeks_row, parent, false);
+
+            TextView weekView = (TextView) rowView.findViewById(R.id.weekText);
+            TextView scoreView = (TextView) rowView.findViewById(R.id.scoreText);
+            TextView dateView = (TextView) rowView.findViewById(R.id.dateText);
+
+            rowView.setClickable(true);
+            rowView.setFocusable(true);
+
+            Integer weekCountForString = weeksArrayList.get(position).weekCount;
+            final String weekString = weekCountForString.toString();
+
+            Integer userScoreForString = weeksArrayList.get(position).userScore;
+            String scoreString = userScoreForString.toString();
+
+            String dateString = weeksArrayList.get(position).closeDate;
+
+            weekView.setText("Week " + weekString);
+            scoreView.setText("Your Score : " + scoreString);
+            dateView.setText("Closed At " + dateString);
+
+            View.OnClickListener yourClickListener = new View.OnClickListener() {
+                public void onClick(View v) {
+                    Log.i("Hello: ", "I am here and my week value is: " + weekString);
+                    Intent detailIntent = new Intent(MainActivity.this, DetailWeekActivity.class);
+                    detailIntent.putExtra(getString(R.string.week_count), weekString);
+                    startActivity(detailIntent);
+                    //v.callOnClick();
+                }
+            };
+
+            rowView.setOnClickListener(yourClickListener);
+            return rowView;
+        }
+
+        @Override
+        public boolean areAllItemsEnabled()
+        {
+            return true;
+        }
+
+        @Override
+        public boolean isEnabled(int arg0)
+        {
+            return true;
+        }
+    }
 
     private ListView mListView1, mListView2;
 
@@ -40,30 +106,40 @@ public class MainActivity extends ActionBarActivity {
         ListUtils.setDynamicHeight(mListView2);
 
 
+        Intent detailIntent = new Intent(this, DetailWeekActivity.class);
+
         mListView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "selected week", Toast.LENGTH_LONG);
-
+                Log.i("Hey: ", "I am on list-1 listener");
+                Toast myToast = Toast.makeText(MainActivity.this, "selected week", Toast.LENGTH_LONG);
+                myToast.show();
 
             }
         });
 
 
-        mListView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView v = (TextView) view.findViewById(R.id.weekText);
-                Toast.makeText(getApplicationContext(), "selected week is: " + v.getText(), Toast.LENGTH_SHORT);
-            }
-        });
+        mListView2.setOnItemClickListener(selectWeek);
     }
+
+    private AdapterView.OnItemClickListener selectWeek = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.i("Hey: ", "New on click listener for list 2");
+        }
+    };
 
     private ArrayList<Week> getWeekList(){
         ArrayList<Week> weeks = new ArrayList<Week>();
         weeks.add(new Week(14, 3000, "11/03/2105"));
         weeks.add(new Week(13, 2500, "2/03/2015"));
         weeks.add(new Week(12, 2700, "27/02/2015"));
+        weeks.add(new Week(11, 1700, "27/02/2015"));
+        weeks.add(new Week(10, 3200, "27/02/2015"));
+        weeks.add(new Week(9, 8000, "27/02/2015"));
+        weeks.add(new Week(8, 4200, "27/02/2015"));
+        weeks.add(new Week(7, 3300, "27/02/2015"));
+        weeks.add(new Week(6, 1100, "27/02/2015"));
         return weeks;
     }
 
@@ -96,42 +172,3 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-/*
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-
-public class MainActivity extends ActionBarActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
-*/
