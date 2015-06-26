@@ -18,30 +18,11 @@ public class DetailMatchActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detail_match);
 
         matchHeader = (TextView)findViewById(R.id.matchHeader);
-        currentMatch = getIntent().getParcelableExtra("match");
+        Bundle bundle = getIntent().getExtras();
+        currentMatch = (Match)bundle.getSerializable("match");
         matchHeader.setText(currentMatch.homeTeam + " versus " + currentMatch.awayTeam);
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detail_match, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

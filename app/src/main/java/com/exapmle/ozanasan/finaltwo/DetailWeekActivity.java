@@ -45,6 +45,8 @@ public class DetailWeekActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentForMatchDetail = new Intent(DetailWeekActivity.this, DetailMatchActivity.class);
 
+
+
                 Match match = (Match)DetailWeekActivity.this.matchList.get(position);
 
                 intentForMatchDetail.putExtra("match", match);
@@ -66,7 +68,7 @@ public class DetailWeekActivity extends ActionBarActivity {
     }
 
     private ArrayList<String> getMatchListForSimpleRow(){
-        ArrayList<Match> matchList = getMatchList();
+        matchList = getMatchList();
         ArrayList<String> returnList = new ArrayList<String>();
 
         int index = 0;
