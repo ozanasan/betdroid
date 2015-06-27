@@ -24,9 +24,6 @@ public class DetailWeekActivity extends ActionBarActivity {
     private String weekString;
     private Intent intentThatStartedMe;
 
-
-    //private String[] data1 = {"HMmm", "Hello", "Myyyyy"};
-
     protected ArrayList<Match> matchList;
 
     @Override

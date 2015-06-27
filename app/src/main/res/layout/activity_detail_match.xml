@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show On Maps"
-        android:id="@+id/button2"
+        android:id="@+id/open_map"
         android:layout_marginTop="28dp"
         android:layout_below="@+id/button"
         android:layout_alignLeft="@+id/button"

@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class Match implements Serializable {
     public String homeTeam;
     public String awayTeam;
+    public String location = "geo:0,0?q=37.423156,-122.084917";
     //private GeoPoint matchLocation;
 
     public Match(String homeTeam, String awayTeam) {

@@ -6,5 +6,11 @@
     <string name="title_activity_week_detail">WeekDetailActivity</string>
     <string name="title_activity_detail_week">Weeks</string>
     <string name="week_count">WeekCount</string>
-    <string name="title_activity_detail_match">DetailMatchActivity</string>>
+    <string name="title_activity_detail_match">DetailMatchActivity</string>
+    <string name="title_activity_login">LoginActivity</string>>
+
+    <string name="welcome">Welcome</string>
+    <string name="open_detail">Open detail</string>
+
+    <string name="facebook_app_id">1005222796178043</string>
 </resources>

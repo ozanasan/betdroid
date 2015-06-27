@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.exapmle.ozanasan.finaltwo" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,10 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WeekDetailActivity"
-            android:label="@string/title_activity_week_detail" >
-        </activity>
-        <activity
             android:name=".DetailWeekActivity"
             android:label="@string/title_activity_detail_week" >
         </activity>
@@ -28,6 +26,14 @@
             android:name=".DetailMatchActivity"
             android:label="@string/title_activity_detail_match" >
         </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>
